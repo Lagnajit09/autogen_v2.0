@@ -1,4 +1,3 @@
-import React from "react";
 import { Handle, Position } from "@xyflow/react";
 import { Globe, Play, Zap } from "lucide-react";
 
@@ -8,6 +7,7 @@ interface TriggerNodeData {
   description?: string;
 }
 
+// Helper function to get the appropriate icon based on trigger type
 const getIcon = (type: string) => {
   switch (type) {
     case "http":
@@ -24,10 +24,11 @@ const getIcon = (type: string) => {
 export const TriggerNode = ({ data }: { data: TriggerNodeData }) => {
   return (
     <div className="group relative bg-slate-800/90 backdrop-blur-sm border-2 border-emerald-500/50 rounded-xl shadow-2xl min-w-[160px] hover:shadow-emerald-500/20 transition-all duration-300">
-      {/* Glow effect */}
+      {/* Glow effect on hover */}
       <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/20 to-green-500/20 rounded-xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10"></div>
 
       <div className="relative p-3">
+        {/* Header with icon and label */}
         <div className="flex items-center space-x-2 mb-2">
           <div className="p-1.5 bg-emerald-500/20 rounded-lg">
             {getIcon(data.type)}
@@ -39,6 +40,7 @@ export const TriggerNode = ({ data }: { data: TriggerNodeData }) => {
           </div>
         </div>
 
+        {/* Footer with badge and status indicator */}
         <div className="flex items-center justify-between">
           <div className="inline-flex items-center px-1.5 py-0.5 bg-emerald-500/20 text-emerald-300 text-xs font-medium rounded-md">
             ⚡ Trigger
@@ -47,6 +49,7 @@ export const TriggerNode = ({ data }: { data: TriggerNodeData }) => {
         </div>
       </div>
 
+      {/* Connection handle - only source (output) for triggers */}
       <Handle
         type="source"
         position={Position.Right}

@@ -1,9 +1,9 @@
-import { Button } from "@/components/ui/button";
+import { WorkflowBuilder } from "@/components/WorkflowBuilder";
 
 const Index = () => {
   return (
-    <div>
-      <Button>Click Me</Button>
+    <div className="min-h-screen bg-gray-50">
+      <WorkflowBuilder />
     </div>
   );
 };
